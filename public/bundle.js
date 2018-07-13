@@ -62,17 +62,23 @@ console.log(driver2.name + " " + driver2.surname + " => " + (driver2.drivingLice
 console.log(driver3.name + " " + driver3.surname + " => " + (driver3.drivingLicense ? "YES" : "NO"));
 
 //ES6 TEMPLATE LITERALS
-console.log(`${driver1.name} ${driver1.surname} -> ${driver1.drivingLicense}`);
+
+const driver1NameAndSurname = `${driver1.name} ${driver1.surname}`;
+console.log(`${driver1NameAndSurname} -> ${driver1.drivingLicense}`);
 console.log(`${driver2.name} ${driver2.surname} -> ${driver2.drivingLicense}`);
 console.log(`${driver3.name} ${driver3.surname} -> ${driver3.drivingLicense}`);
 
+console.log(`String starts with J ${driver1NameAndSurname.startsWith('J')}`);//case sensitive - returns true
+console.log(`String starts with j ${driver1NameAndSurname.startsWith('j')}`);//case  sensitive - returns false
 
+console.log(`String ends with ith ${driver1NameAndSurname.endsWith('ith')}`);//true
+console.log(`String ends with Smith ${driver1NameAndSurname.endsWith('Smith')}`);//true
 
+console.log(`String includes space ${driver1NameAndSurname.includes(' ')}`);//true
+console.log(`String includes hn Sm ${driver1NameAndSurname.startsWith('hn Sm')}`);//false
+console.log(`String includes Sarah ${driver1NameAndSurname.startsWith('Sarah')}`);//false
 
-
-
-
-
+console.log(`Repeat the details three times => ${driver1NameAndSurname.repeat(3)}`);
 },{"./drivers":2}],2:[function(require,module,exports){
 var driver1 = {
 	name: "John",
