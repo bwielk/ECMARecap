@@ -2,19 +2,39 @@
 var {driver1} = require('./drivers');
 var {driver2} = require('./drivers');
 var {driver3} = require('./drivers');
-//let and consts
 
-var nameES5 = "Jen Smith";
-var ageES5 = 20;
-nameES5 = "Jen Stone";
-console.log(nameES5);
+////////////////////////////////////// VAR, CONST and LET /////////////////////////////////////////////
 
-const nameES6 = "Jen Smith";
-let ageES6 = 23;
-//nameES6 = "Jen Miller";
-console.log(nameES6);
+//VAR AND FUNCTION SCOPE - VARs will be read by the console log
+function readDriverDetailsES5(person){
+	if(person.drivingLicense){
+		var name = person.name;
+		var surname = person.surname;
+		var yearOfPassing = person.drivingLicensePassed;
+	}else{
+		console.log("No such driver");
+	}
+	console.log("DRIVER DETAILS : " + name + " " + surname + ". Gained driving license in " + yearOfPassing);
+}
 
-function driversLicense(passedTest, person){
+//VAR AND BLOCK SCOPE
+function readDriverDetailsES6(person){
+	if(person.drivingLicense){
+		let name = person.name;
+		let surname = person.surname;
+		const yearOfPassing = person.drivingLicensePassed;
+		console.log("DRIVER DETAILS : " + name + " " + surname + ". Gained driving license in " + yearOfPassing);//Will be read
+	}else{
+		console.log("No such driver");
+	}
+	//console.log("DRIVER DETAILS : " + name + " " + surname + ". Gained driving license in " + yearOfPassing);//Won't be read
+}
+
+readDriverDetailsES5(driver3);
+readDriverDetailsES6(driver3);
+////////////////////////////////////// METHODS ES5 vs ES6 //////////////////////////////////////////////
+
+function driversLicenseES5(passedTest, person){
 	var personNameAndSurname = person.name + " " + person.surname;
 	if((passedTest) && (!person.drivingLicense)){
 		person.drivingLicense = true;
@@ -30,9 +50,13 @@ function driversLicense(passedTest, person){
 	}
 }
 
-driversLicense(true, driver1);//Passed
-driversLicense(false, driver2);//Didn't pass
-driversLicense(true, driver3);//Has already passed
+driversLicenseES5(true, driver1);//Passed
+driversLicenseES5(false, driver2);//Didn't pass
+driversLicenseES5(true, driver3);//Has already passed
+
+
+
+
 },{"./drivers":2}],2:[function(require,module,exports){
 var driver1 = {
 	name: "John",
