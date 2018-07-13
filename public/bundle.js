@@ -68,37 +68,67 @@ console.log(`${driver1NameAndSurname} -> ${driver1.drivingLicense}`);
 console.log(`${driver2.name} ${driver2.surname} -> ${driver2.drivingLicense}`);
 console.log(`${driver3.name} ${driver3.surname} -> ${driver3.drivingLicense}`);
 
-console.log(`String starts with J ${driver1NameAndSurname.startsWith('J')}`);//case sensitive - returns true
-console.log(`String starts with j ${driver1NameAndSurname.startsWith('j')}`);//case  sensitive - returns false
+console.log(`${driver1NameAndSurname} starts with J ${driver1NameAndSurname.startsWith('J')}`);//case sensitive - returns true
+console.log(`${driver1NameAndSurname} starts with j ${driver1NameAndSurname.startsWith('j')}`);//case  sensitive - returns false
 
-console.log(`String ends with ith ${driver1NameAndSurname.endsWith('ith')}`);//true
-console.log(`String ends with Smith ${driver1NameAndSurname.endsWith('Smith')}`);//true
+console.log(`${driver1NameAndSurname} ends with ith ${driver1NameAndSurname.endsWith('ith')}`);//true
+console.log(`${driver1NameAndSurname} ends with Smith ${driver1NameAndSurname.endsWith('Smith')}`);//true
 
-console.log(`String includes space ${driver1NameAndSurname.includes(' ')}`);//true
-console.log(`String includes hn Sm ${driver1NameAndSurname.startsWith('hn Sm')}`);//false
-console.log(`String includes Sarah ${driver1NameAndSurname.startsWith('Sarah')}`);//false
+console.log(`${driver1NameAndSurname} includes space ${driver1NameAndSurname.includes(' ')}`);//true
+console.log(`${driver1NameAndSurname} includes hn Sm ${driver1NameAndSurname.includes('hn Sm')}`);//true
+console.log(`${driver1NameAndSurname} includes Sarah ${driver1NameAndSurname.includes('Sarah')}`);//false
 
 console.log(`Repeat the details three times => ${driver1NameAndSurname.repeat(3)}`);
+
+////////////////////////////////////// ARROW FUNCTIONS //////////////////////////////////////////////
+
+const yearsOfBirth = [driver1.yearOfBirth, driver2.yearOfBirth, driver3.yearOfBirth, 2019];
+
+//ES5
+var agesES5 = yearsOfBirth.map(function(el){
+	let result = new Date().getFullYear() - el;
+	if(result >= 0){
+		return result;
+	}
+});
+console.log(agesES5);
+
+//ES6
+const agesES6 = yearsOfBirth.map(el => {
+	let result = new Date().getFullYear() - el;
+	if(result >= 0){
+		return result;
+	}
+});
+console.log(`ES6 example ${agesES6}`);
+
+const printAgesES6 = yearsOfBirth.map((el, index) => `Age element number ${index}: ${new Date().getFullYear() - el}`);
+console.log(printAgesES6);
+
+
 },{"./drivers":2}],2:[function(require,module,exports){
 var driver1 = {
 	name: "John",
 	surname: "Smith",
 	drivingLicense: false,
-	drivingLicensePassed: null
+	drivingLicensePassed: null,
+	yearOfBirth: 1986
 }
 
 var driver2 = {
 	name: "Sarah",
 	surname: "MacFleetwood",
 	drivingLicense: false,
-	drivingLicensePassed: null
+	drivingLicensePassed: null,
+	yearOfBirth: 1992
 }
 
 var driver3 = {
 	name: "Andrew",
 	surname: "Outkast",
 	drivingLicense: true,
-	drivingLicensePassed: 2001
+	drivingLicensePassed: 2001,
+	yearOfBirth: 1980
 }
 
 module.exports = {driver1, driver2, driver3};
