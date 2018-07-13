@@ -27,7 +27,7 @@ function readDriverDetailsES6(person){
 	}else{
 		console.log("No such driver");
 	}
-	//console.log("DRIVER DETAILS : " + name + " " + surname + ". Gained driving license in " + yearOfPassing);//Won't be read
+	//console.log("DRIVER DETAILS : " + name + " " + surname + ". Gained driving license in " + yearOfPassing);//Won't be read unless declared outside of the block
 }
 
 readDriverDetailsES5(driver3);
@@ -53,6 +53,22 @@ function driversLicenseES5(passedTest, person){
 driversLicenseES5(true, driver1);//Passed
 driversLicenseES5(false, driver2);//Didn't pass
 driversLicenseES5(true, driver3);//Has already passed
+
+////////////////////////////////////// STRING //////////////////////////////////////////////
+
+//ES5
+console.log(driver1.name + " " + driver1.surname + " => " + (driver1.drivingLicense ? "YES" : "NO"));
+console.log(driver2.name + " " + driver2.surname + " => " + (driver2.drivingLicense ? "YES" : "NO"));
+console.log(driver3.name + " " + driver3.surname + " => " + (driver3.drivingLicense ? "YES" : "NO"));
+
+//ES6 TEMPLATE LITERALS
+console.log(`${driver1.name} ${driver1.surname} -> ${driver1.drivingLicense}`);
+console.log(`${driver2.name} ${driver2.surname} -> ${driver2.drivingLicense}`);
+console.log(`${driver3.name} ${driver3.surname} -> ${driver3.drivingLicense}`);
+
+
+
+
 
 
 
