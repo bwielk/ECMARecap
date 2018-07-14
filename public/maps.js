@@ -19,4 +19,6 @@ if(!question.has('D')){
 
 console.log(question.get('question'));
 console.log(question.size);
-console.log(question);
+// question.clear();
+
+question.forEach((value, key) => console.log(`${key} has a value of ${value}`));
