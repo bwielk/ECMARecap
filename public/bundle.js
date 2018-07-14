@@ -60,5 +60,17 @@ if(!question.has('D')){
 
 console.log(question.get('question'));
 console.log(question.size);
-console.log(question);
+// question.clear();
+
+question.forEach((value, key) => console.log(`${key} has a value of ${value}`));
+
+for(let [key, value] of question.entries()){
+		if(key < 'E'){
+			console.log(value);
+		}
+}
+
+const answer = prompt("Write the correct answer");
+console.log(question.get(answer === question.get('correct')));
+
 },{"./driver":1,"./drivers":2}]},{},[3,1,2]);
