@@ -1,6 +1,7 @@
 var {driver1} = require('./drivers');
 var {driver2} = require('./drivers');
 var {driver3} = require('./drivers');
+var Driver = require('./driver');
 
 ////////////////////////////////////// VAR, CONST and LET /////////////////////////////////////////////
 
@@ -104,3 +105,38 @@ console.log(`ES6 example ${agesES6}`);
 const printAgesES6 = yearsOfBirth.map((el, index) => `Age element number ${index}: ${new Date().getFullYear() - el}`);
 console.log(printAgesES6);
 
+////////////////////////////////////// ARROW FUNCTIONS //////////////////////////////////////////////
+
+//ES5
+
+var boxES5 = {
+	color: 'green',
+	position: 1,
+	clickMe: function(){
+		var self = this;// now this refers to the object, not the window
+		document.querySelector('.green').addEventListener('click', function(){
+			var text = "This is box number " + self.position + " and is " + self.color;
+			alert(text);
+		});
+	}
+}
+
+boxES5.clickMe();
+
+//ES6
+
+const boxES6 = {
+	color: 'blue',
+	position: 2,
+	clickMe: function(){
+		document.querySelector('.blue').addEventListener('click', () => {
+			var text = "This is box number " + this.position + " and is " + this.color;
+			alert(text);
+		});
+	}
+}
+
+boxES6.clickMe();
+
+console.log(new Driver("Adam", "Smith").ownedCarsES5(['Audi', 'Toyota', 'Mitsubishi']));
+console.log(new Driver("Adam", "Page").ownedCarsES6(['Audi A4', 'Toyota C6', 'Mitsubishi Charisma']));
