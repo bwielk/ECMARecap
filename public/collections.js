@@ -35,8 +35,9 @@ const boxes = document.querySelectorAll(".box");
 console.log(boxes);
 
 //ES5
-/*
+
 var boxesArrES5 = Array.prototype.slice.call(boxes);
+/*
 boxesArrES5.forEach(function(currentElement){
 	currentElement.style.backgroundColor = "grey";
 })
@@ -45,3 +46,33 @@ boxesArrES5.forEach(function(currentElement){
 //ES6
 boxesArrES6 = Array.from(boxes);
 boxesArrES6.forEach(currentElement => currentElement.style.backgroundColor = "pink");
+
+/*
+for(var i=0; i<boxesArrES5.length; i++){
+	if(boxesArrES5[i].className === 'box blue'){
+		continue;
+	}
+	boxesArrES5[i].textContent = `I am number ${i}`;
+}
+*/
+
+for (const currentElement of boxesArrES5){
+	if(currentElement.className === 'box blue'){
+		continue;
+	}
+	currentElement.textContent = `This is a ES6 loop result`;
+	currentElement.style.backgroundColor = "blue";
+}
+
+var agesOfKids = [9, 2, 12, 8, 5, 6, 11];
+
+var olderThan11 = agesOfKids.map(function(currentElement){
+	return currentElement > 11;
+})
+console.log(olderThan11);
+console.log("The ES5 method => " + olderThan11.indexOf(true));
+
+//ES6
+
+let result = agesOfKids.findIndex(currentElement => currentElement > 11);
+console.log("The ES6 method => " + result);
