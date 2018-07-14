@@ -64,7 +64,8 @@ for (const currentElement of boxesArrES5){
 	currentElement.style.backgroundColor = "blue";
 }
 
-var agesOfKids = [9, 2, 12, 8, 5, 6, 11];
+var agesOfKids = [9, 2, 12, 8];
+var agesOfAdults = [23, 27, 24, 26];
 
 var olderThan11 = agesOfKids.map(function(currentElement){
 	return currentElement > 11;
@@ -76,3 +77,29 @@ console.log("The ES5 method => " + olderThan11.indexOf(true));
 
 let result = agesOfKids.findIndex(currentElement => currentElement > 11);
 console.log("The ES6 method => " + result);
+
+
+////////////////////////////////////// SPREADS /////////////////////////////////////////////
+
+//ES5
+function addAges (a,b,c,d){
+	return a + b + c + d;
+}
+
+var sum1 = addAges(9,2,12,8);
+console.log(sum1);
+var sumOfAgesOfKids = addAges.apply(null, agesOfKids);
+console.log(sumOfAgesOfKids);
+
+//ES6
+
+const sumOfAgesES6 = addAges(...agesOfKids);
+console.log(sumOfAgesES6);
+
+const allAges = [...agesOfKids, ...agesOfAdults];
+console.log(allAges);
+
+
+
+
+
