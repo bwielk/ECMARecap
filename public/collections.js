@@ -133,3 +133,10 @@ const isFullAgeES6Custom = (limit, ...years) => {
 isFullAgeES6Poland(1987, 1988, 1992, 1993, 1996);
 isFullAgeES6Custom(25, 1999, 1980, 2010, 1987);
 isFullAgeES6Custom(20);
+
+//DEFAULT PARAMETERS ES5
+
+var driver4 = new Driver("Sean", "Rochester");
+console.log(driver4);
+
+//DEFAULT PARAMETERS ES6

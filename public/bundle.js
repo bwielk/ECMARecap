@@ -131,14 +131,24 @@ const isFullAgeES6Custom = (limit, ...years) => {
 	years.forEach(currentElement => (console.log(`Is a person born in ${currentElement} of full age? ANSWER: ${new Date().getFullYear() - currentElement >= 18}`)));
 }
 
-// isFullAgeES6Poland(1987, 1988, 1992, 1993, 1996);
-// isFullAgeES6Custom(25, 1999, 1980, 2010, 1987);
+isFullAgeES6Poland(1987, 1988, 1992, 1993, 1996);
+isFullAgeES6Custom(25, 1999, 1980, 2010, 1987);
 isFullAgeES6Custom(20);
 
+//DEFAULT PARAMETERS ES5
+
+var driver4 = new Driver("Sean", "Rochester");
+console.log(driver4);
+
+
 },{"./driver":2,"./drivers":3}],2:[function(require,module,exports){
-function Driver(name, surname){
+function Driver(name, surname, placeOfBirth){
+	name === undefined ? name = "UNKNOWN" : name = name;
+	surname === undefined ? surname = "UNKNOWN" : surname = surname;
+	placeOfBirth === undefined ? placeOfBirth = "UNKNOWN" : placeOfBirth = placeOfBirth;
 	this.name = name;
 	this.surname = surname;
+	this.placeOfBirth = placeOfBirth;
 }
 
 Driver.prototype.ownedCarsES5 = function(cars){
@@ -155,17 +165,17 @@ module.exports = Driver;
 },{}],3:[function(require,module,exports){
 var Driver = require('./driver');
 
-var driver1 = new Driver("John", "Smith");
+var driver1 = new Driver("John", "Smith", "Rochester");
 	driver1.drivingLicense = false;
 	driver1.drivingLicensePassed = null;
 	driver1.yearOfBirth = 1986;
 
-var driver2 = new Driver("Sarah", "MacFleetwood");
+var driver2 = new Driver("Sarah", "MacFleetwood", "Manchester");
 	driver2.drivingLicense = false;
 	driver2.drivingLicensePassed = null;
 	driver2.yearOfBirth = 1992;
 
-var driver3 = new Driver("Andrew", "Outkast");
+var driver3 = new Driver("Andrew", "Outkast", "Chester");
 	driver3.drivingLicense = true;
 	driver3.drivingLicensePassed = 2001;
 	driver3.yearOfBirth = 1980;
