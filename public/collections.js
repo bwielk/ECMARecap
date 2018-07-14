@@ -102,19 +102,34 @@ console.log(allAges);
 ////////////////////////////////////// REST AND DEFAULT PARAMETERS /////////////////////////////////////////////
 
 //REST ES5
-function isFullAgeES5() {
+function isFullAgeES5Poland() {
 	var args = Array.prototype.slice.call(arguments);//makes args turn into an array
 	args.forEach(function(currentElement){
 		console.log(`Is a person born in ${currentElement} of full age? ANSWER: ${(new Date().getFullYear() - currentElement) >= 18}`);
 	});
 }
 
-// isFullAgeES5(1990, 1999, 2016);
-// isFullAgeES5(1983, 1995, 2000, 2012, 2016, 2017);
+function isFullAgeES5Custom(limit) {
+	//1 is the index from which slice will work.
+	//This will exclude the limit parameter that is at the beginning of the args object.
+	var argsArr = Array.prototype.slice.call(arguments, 1);
+	argsArr.forEach(function(currentElement){
+		console.log(`${currentElement} => ${(new Date().getFullYear() - currentElement) >= limit}`);
+	})
+}
+
+isFullAgeES5Poland(1990, 1999, 2016);
+isFullAgeES5Custom(21, 1983, 1995, 2000, 2012, 2016, 2017);
 
 //REST ES6
-const isFullAgeES6 = (...years) =>{
+const isFullAgeES6Poland = (...years) =>{
 	years.forEach(currentElement => (console.log(`Is a person born in ${currentElement} of full age? ANSWER: ${new Date().getFullYear() - currentElement >= 18}`)));
 }
 
-isFullAgeES6(1987, 1988, 1992, 1993, 1996);
+const isFullAgeES6Custom = (limit, ...years) => {
+	years.forEach(currentElement => (console.log(`Is a person born in ${currentElement} of full age? ANSWER: ${new Date().getFullYear() - currentElement >= 18}`)));
+}
+
+isFullAgeES6Poland(1987, 1988, 1992, 1993, 1996);
+isFullAgeES6Custom(25, 1999, 1980, 2010, 1987);
+isFullAgeES6Custom(20);
