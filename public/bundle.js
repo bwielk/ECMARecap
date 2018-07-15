@@ -1,11 +1,10 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 //ES5
 
-function Person5(name, surname, yearOfBirth, occupation){
+function Person5(name, surname, yearOfBirth){
 	this.name = name;
 	this.surname = surname;
 	this.yearOfBirth = yearOfBirth;
-	this.occupation = occupation;
 } 
 
 var Animal5 = function(name, species, yearOfBirth){
@@ -18,11 +17,35 @@ Person5.prototype.calculateAge = function() {
 	return (new Date().getFullYear() - this.yearOfBirth);
 };
 
-var amyWinehouse = new Person5("Amy", "Winehouse", 1984, "singer");
+var amyWinehouse = new Person5("Amy", "Winehouse", 1984);
 var choupette = new Animal5("Choupette", "cat", 2012);
 console.log(amyWinehouse);
 console.log(choupette);
 console.log(amyWinehouse.calculateAge());
+
+//INHERITANCE
+
+function Singer5(name, surname, yearOfBirth, numberOfReleasedAlbums, numberOfGrammyAwards){
+	Person5.call(this, name, surname, yearOfBirth);
+	this.numberOfReleasedAlbums = numberOfReleasedAlbums;
+	this.numberOfGrammyAwards = numberOfGrammyAwards;
+}
+
+Singer5.prototype = Object.create(Person5.prototype);
+
+var singerAmyWinehouse = new Singer5("Amy", "Winehouse", 1984, 3, 3);
+console.log(singerAmyWinehouse);
+console.log(singerAmyWinehouse.calculateAge());
+
+Singer5.prototype.wonAGrammyAward = function(){
+	this.numberOfGrammyAwards += 1;
+}
+
+singerAmyWinehouse.wonAGrammyAward();
+singerAmyWinehouse.wonAGrammyAward();
+singerAmyWinehouse.wonAGrammyAward();
+
+console.log(singerAmyWinehouse);
 
 //ES6
 
@@ -39,11 +62,16 @@ class Person6 {
 		let age = currentYear - this.yearOfBirth;
 		return age;
 	}
+
+	static greeting(){
+		console.log("Hi there");
+	}
 }
 
 let joniMitchell = new Person6("Joni", "Mitchell", 1944, "singer");
 console.log(joniMitchell);
 console.log(joniMitchell.calculateAge());
+console.log(Person6.greeting());
 },{}],2:[function(require,module,exports){
 function Driver(name, surname, placeOfBirth){
 	name === undefined ? name = "UNKNOWN" : name = name;
