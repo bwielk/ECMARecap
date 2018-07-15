@@ -23,7 +23,7 @@ console.log(amyWinehouse);
 console.log(choupette);
 console.log(amyWinehouse.calculateAge());
 
-//INHERITANCE
+//INHERITANCE ES5
 
 function Singer5(name, surname, yearOfBirth, numberOfReleasedAlbums, numberOfGrammyAwards){
 	Person5.call(this, name, surname, yearOfBirth);
@@ -72,6 +72,29 @@ let joniMitchell = new Person6("Joni", "Mitchell", 1944, "singer");
 console.log(joniMitchell);
 console.log(joniMitchell.calculateAge());
 console.log(Person6.greeting());
+
+//INHERITANCE ES6
+
+class Singer6 extends Person6 {
+
+	constructor(name, surname, yearOfBirth, numberOfGrammyAwards, numberOfReleasedAlbums){
+		super(name, surname, yearOfBirth);
+		this.numberOfGrammyAwards = numberOfGrammyAwards;
+		this.numberOfReleasedAlbums = numberOfReleasedAlbums;
+	}
+
+	releasedAnAlbum(){
+		this.numberOfReleasedAlbums += 1;
+		console.log(`${this.name} ${this.surname} has just released an album`);
+	}
+}
+
+let singerJoniMitchell = new Singer6("Joni", "Mitchell", 1944, 5, 14);
+singerJoniMitchell.releasedAnAlbum();
+singerJoniMitchell.releasedAnAlbum();
+
+console.log(singerJoniMitchell);
+
 },{}],2:[function(require,module,exports){
 function Driver(name, surname, placeOfBirth){
 	name === undefined ? name = "UNKNOWN" : name = name;
